@@ -52,7 +52,6 @@ window.books = [
         title: "The 12 Laws of Power",
         subtitle: "Master the Art of Influence Without Compromising Your Integrity",
         cover: "images/12LawsofPowerFrontCoverAlone.png",
-        coverWide: "images/12LawsofPowerCover.png", // Wide format cover for the upcoming section
         description: "True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity. This razor-sharp guide combines neuroscience, psychology, and ancient Vedic archetypes to give you the ultimate persuasion toolkit.",
         category: "non-fiction",
         links: {
@@ -128,11 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('upcoming-book');
         }
 
-        // Check if this is The 12 Laws of Power book (which has a wide format cover)
-        const isWideFormatBook = book.id === 4;
-
         card.innerHTML = `
-            <div class="book-cover${isWideFormatBook ? ' wide-format' : ''}">
+            <div class="book-cover">
                 <img src="${book.cover}" alt="${book.title} book cover">
                 ${book.featured ? '<span class="featured-badge">Featured</span>' : ''}
                 ${book.upcoming ? '<span class="upcoming-badge">Coming June 14th</span>' : ''}
@@ -289,7 +285,6 @@ window.bookPreviews = [
         title: "The 12 Laws of Power",
         subtitle: "Master the Art of Influence Without Compromising Your Integrity",
         cover: "images/12LawsofPowerFrontCoverAlone.png",
-        coverWide: "images/12LawsofPowerCover.png", // Wide format cover for the upcoming section
         description: "True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity. This razor-sharp guide combines neuroscience, psychology, and ancient Vedic archetypes to give you the ultimate persuasion toolkit.",
         excerpt: `<p>True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity.</p>
         <p>The 12 Laws of Power is a razor-sharp guide to modern influence—where neuroscience, psychology, and ancient Vedic archetypes converge to give you the ultimate persuasion toolkit. This isn't about manipulation; it's about mastery: of perception, timing, emotion, and self.</p>
@@ -331,13 +326,10 @@ function openBookPreview(bookId) {
     if (!modalBody) return;
 
     // Set preview content
-    // Check if this is The 12 Laws of Power book (which has a wide format cover)
-    const isWideFormatBook = book.id === 4;
-
     modalBody.innerHTML = `
         <div class="preview-content">
             <div class="preview-header">
-                <img src="${isWideFormatBook && book.coverWide ? book.coverWide : book.cover}" alt="${book.title} book cover" class="preview-cover${isWideFormatBook ? ' wide-format' : ''}">
+                <img src="${book.cover}" alt="${book.title} book cover" class="preview-cover">
                 <div class="preview-info">
                     <h2>${book.title}</h2>
                     <p class="preview-subtitle">${book.subtitle}</p>
