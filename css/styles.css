@@ -608,19 +608,19 @@ img {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 100px; /* Increased padding for desktop */
+    padding-top: 120px; /* Increased padding for desktop */
     z-index: 1;
 }
 
 @media (max-width: 768px) {
     .hero {
-        padding-top: 120px; /* More padding on mobile */
+        padding-top: 140px; /* More padding on mobile */
     }
 }
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 160px; /* Even more padding on small screens */
+        padding-top: 180px; /* Even more padding on small screens */
         height: auto; /* Allow the hero section to expand as needed */
         min-height: 100vh; /* Ensure it takes at least the full viewport height */
     }
@@ -724,7 +724,7 @@ img {
     animation: fadeInUp 1s ease-out;
     position: relative;
     z-index: 5; /* Lower z-index to ensure proper stacking */
-    margin-top: 40px; /* Increased to provide more space at the top */
+    margin-top: 80px; /* Increased to provide more space at the top */
 }
 
 .author-avatar img {
