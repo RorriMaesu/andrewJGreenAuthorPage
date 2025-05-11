@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <rect width="100%" height="100%" fill="#0A0C14" />
+  
+  <!-- Code snippets with varying opacity -->
+  <g fill="#00E5FF" opacity="0.15" font-family="'JetBrains Mono', monospace" font-size="14">
+    <!-- First code block -->
+    <text x="100" y="100">class VedicChart {</text>
+    <text x="100" y="125">  constructor(birthDate, birthTime, latitude, longitude) {</text>
+    <text x="100" y="150">    this.birthDate = birthDate;</text>
+    <text x="100" y="175">    this.birthTime = birthTime;</text>
+    <text x="100" y="200">    this.latitude = latitude;</text>
+    <text x="100" y="225">    this.longitude = longitude;</text>
+    <text x="100" y="250">    this.planets = this.calculatePlanetaryPositions();</text>
+    <text x="100" y="275">    this.houses = this.calculateHouses();</text>
+    <text x="100" y="300">    this.aspects = this.calculateAspects();</text>
+    <text x="100" y="325">  }</text>
+    <text x="100" y="350">}</text>
+
+    <!-- Second code block -->
+    <text x="800" y="200">function calculatePlanetaryPositions() {</text>
+    <text x="800" y="225">  const cosmicInfluence = 0.0172024;</text>
+    <text x="800" y="250">  const celestialAlignment = calculateAlignment();</text>
+    <text x="800" y="275">  </text>
+    <text x="800" y="300">  return planets.map(planet => {</text>
+    <text x="800" y="325">    const position = planet.basePosition + celestialAlignment;</text>
+    <text x="800" y="350">    const karmicPattern = position * cosmicInfluence;</text>
+    <text x="800" y="375">    return { ...planet, position, karmicPattern };</text>
+    <text x="800" y="400">  });</text>
+    <text x="800" y="425">}</text>
+
+    <!-- Third code block -->
+    <text x="500" y="500">// Calculate the Nakshatra (lunar mansion)</text>
+    <text x="500" y="525">function getNakshatra(moonLongitude) {</text>
+    <text x="500" y="550">  const nakshatraSize = 13.333333333333334; // 360 / 27</text>
+    <text x="500" y="575">  const nakshatraIndex = Math.floor(moonLongitude / nakshatraSize);</text>
+    <text x="500" y="600">  return NAKSHATRAS[nakshatraIndex];</text>
+    <text x="500" y="625">}</text>
+
+    <!-- Fourth code block -->
+    <text x="1200" y="600">class CosmicAlgorithm {</text>
+    <text x="1200" y="625">  static calculateDasha(birthMoon) {</text>
+    <text x="1200" y="650">    const dashaSequence = [</text>
+    <text x="1200" y="675">      { planet: 'Sun', years: 6 },</text>
+    <text x="1200" y="700">      { planet: 'Moon', years: 10 },</text>
+    <text x="1200" y="725">      { planet: 'Mars', years: 7 },</text>
+    <text x="1200" y="750">      { planet: 'Rahu', years: 18 },</text>
+    <text x="1200" y="775">      { planet: 'Jupiter', years: 16 },</text>
+    <text x="1200" y="800">      { planet: 'Saturn', years: 19 },</text>
+    <text x="1200" y="825">      { planet: 'Mercury', years: 17 },</text>
+    <text x="1200" y="850">      { planet: 'Ketu', years: 7 },</text>
+    <text x="1200" y="875">      { planet: 'Venus', years: 20 }</text>
+    <text x="1200" y="900">    ];</text>
+    <text x="1200" y="925">    return this.calculateDashaSequence(birthMoon, dashaSequence);</text>
+    <text x="1200" y="950">  }</text>
+    <text x="1200" y="975">}</text>
+
+    <!-- Fifth code block -->
+    <text x="200" y="800">const calculateKarmicPattern = (ascendant, planets) => {</text>
+    <text x="200" y="825">  let karmicScore = 0;</text>
+    <text x="200" y="850">  </text>
+    <text x="200" y="875">  planets.forEach(planet => {</text>
+    <text x="200" y="900">    const distance = Math.abs(planet.position - ascendant);</text>
+    <text x="200" y="925">    const influence = 1 - (distance / 180);</text>
+    <text x="200" y="950">    karmicScore += planet.strength * influence;</text>
+    <text x="200" y="975">  });</text>
+    <text x="200" y="1000">  </text>
+    <text x="200" y="1025">  return karmicScore.toFixed(2);</text>
+    <text x="200" y="1050">};</text>
+  </g>
+</svg>

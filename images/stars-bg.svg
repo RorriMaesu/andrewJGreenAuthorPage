@@ -1,0 +1,246 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="skyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0C14" />
+      <stop offset="100%" stop-color="#1B3B6F" />
+    </linearGradient>
+    
+    <!-- Star glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Cyan glow filter -->
+    <filter id="cyanGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Gold glow filter -->
+    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    
+    <!-- Nebula pattern -->
+    <radialGradient id="nebula1" cx="75%" cy="25%" r="50%" fx="75%" fy="25%">
+      <stop offset="0%" stop-color="#FFB54733" />
+      <stop offset="100%" stop-color="#0A0C1400" />
+    </radialGradient>
+    
+    <radialGradient id="nebula2" cx="25%" cy="75%" r="60%" fx="25%" fy="75%">
+      <stop offset="0%" stop-color="#00E5FF33" />
+      <stop offset="100%" stop-color="#0A0C1400" />
+    </radialGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="url(#skyGradient)" />
+  
+  <!-- Nebulae -->
+  <ellipse cx="1440" cy="270" rx="960" ry="540" fill="url(#nebula1)" opacity="0.3" />
+  <ellipse cx="480" cy="810" rx="960" ry="540" fill="url(#nebula2)" opacity="0.3" />
+  
+  <!-- Small stars (hundreds of them) -->
+  <g fill="#FFFFFF">
+    <!-- Row 1 -->
+    <circle cx="120" cy="100" r="1" />
+    <circle cx="240" cy="80" r="1.2" />
+    <circle cx="360" cy="120" r="0.8" />
+    <circle cx="480" cy="60" r="1" />
+    <circle cx="600" cy="110" r="0.7" />
+    <circle cx="720" cy="90" r="1.1" />
+    <circle cx="840" cy="70" r="0.9" />
+    <circle cx="960" cy="130" r="1" />
+    <circle cx="1080" cy="50" r="0.8" />
+    <circle cx="1200" cy="100" r="1.2" />
+    <circle cx="1320" cy="80" r="0.7" />
+    <circle cx="1440" cy="120" r="1" />
+    <circle cx="1560" cy="60" r="0.9" />
+    <circle cx="1680" cy="110" r="1.1" />
+    <circle cx="1800" cy="90" r="0.8" />
+    
+    <!-- Row 2 -->
+    <circle cx="180" cy="200" r="0.9" />
+    <circle cx="300" cy="180" r="1.1" />
+    <circle cx="420" cy="220" r="0.7" />
+    <circle cx="540" cy="160" r="1.2" />
+    <circle cx="660" cy="210" r="0.8" />
+    <circle cx="780" cy="190" r="1" />
+    <circle cx="900" cy="170" r="0.7" />
+    <circle cx="1020" cy="230" r="1.1" />
+    <circle cx="1140" cy="150" r="0.9" />
+    <circle cx="1260" cy="200" r="1" />
+    <circle cx="1380" cy="180" r="0.8" />
+    <circle cx="1500" cy="220" r="1.2" />
+    <circle cx="1620" cy="160" r="0.7" />
+    <circle cx="1740" cy="210" r="1" />
+    <circle cx="1860" cy="190" r="0.9" />
+    
+    <!-- Continue with more rows of stars -->
+    <!-- Row 3 -->
+    <circle cx="150" cy="300" r="1" />
+    <circle cx="270" cy="280" r="0.8" />
+    <circle cx="390" cy="320" r="1.2" />
+    <circle cx="510" cy="260" r="0.7" />
+    <circle cx="630" cy="310" r="1.1" />
+    <circle cx="750" cy="290" r="0.9" />
+    <circle cx="870" cy="270" r="1" />
+    <circle cx="990" cy="330" r="0.8" />
+    <circle cx="1110" cy="250" r="1.2" />
+    <circle cx="1230" cy="300" r="0.7" />
+    <circle cx="1350" cy="280" r="1" />
+    <circle cx="1470" cy="320" r="0.9" />
+    <circle cx="1590" cy="260" r="1.1" />
+    <circle cx="1710" cy="310" r="0.8" />
+    <circle cx="1830" cy="290" r="1" />
+    
+    <!-- Row 4 -->
+    <circle cx="210" cy="400" r="0.8" />
+    <circle cx="330" cy="380" r="1" />
+    <circle cx="450" cy="420" r="0.9" />
+    <circle cx="570" cy="360" r="1.1" />
+    <circle cx="690" cy="410" r="0.7" />
+    <circle cx="810" cy="390" r="1.2" />
+    <circle cx="930" cy="370" r="0.8" />
+    <circle cx="1050" cy="430" r="1" />
+    <circle cx="1170" cy="350" r="0.9" />
+    <circle cx="1290" cy="400" r="1.1" />
+    <circle cx="1410" cy="380" r="0.7" />
+    <circle cx="1530" cy="420" r="1" />
+    <circle cx="1650" cy="360" r="0.8" />
+    <circle cx="1770" cy="410" r="1.2" />
+    <circle cx="1890" cy="390" r="0.9" />
+    
+    <!-- Row 5 -->
+    <circle cx="180" cy="500" r="1.1" />
+    <circle cx="300" cy="480" r="0.7" />
+    <circle cx="420" cy="520" r="1" />
+    <circle cx="540" cy="460" r="0.8" />
+    <circle cx="660" cy="510" r="1.2" />
+    <circle cx="780" cy="490" r="0.9" />
+    <circle cx="900" cy="470" r="1" />
+    <circle cx="1020" cy="530" r="0.7" />
+    <circle cx="1140" cy="450" r="1.1" />
+    <circle cx="1260" cy="500" r="0.8" />
+    <circle cx="1380" cy="480" r="1" />
+    <circle cx="1500" cy="520" r="0.9" />
+    <circle cx="1620" cy="460" r="1.2" />
+    <circle cx="1740" cy="510" r="0.7" />
+    <circle cx="1860" cy="490" r="1" />
+    
+    <!-- Row 6 -->
+    <circle cx="240" cy="600" r="0.9" />
+    <circle cx="360" cy="580" r="1.1" />
+    <circle cx="480" cy="620" r="0.7" />
+    <circle cx="600" cy="560" r="1" />
+    <circle cx="720" cy="610" r="0.8" />
+    <circle cx="840" cy="590" r="1.2" />
+    <circle cx="960" cy="570" r="0.9" />
+    <circle cx="1080" cy="630" r="1" />
+    <circle cx="1200" cy="550" r="0.7" />
+    <circle cx="1320" cy="600" r="1.1" />
+    <circle cx="1440" cy="580" r="0.8" />
+    <circle cx="1560" cy="620" r="1" />
+    <circle cx="1680" cy="560" r="0.9" />
+    <circle cx="1800" cy="610" r="1.2" />
+    <circle cx="1920" cy="590" r="0.7" />
+    
+    <!-- Row 7 -->
+    <circle cx="270" cy="700" r="1" />
+    <circle cx="390" cy="680" r="0.8" />
+    <circle cx="510" cy="720" r="1.2" />
+    <circle cx="630" cy="660" r="0.7" />
+    <circle cx="750" cy="710" r="1.1" />
+    <circle cx="870" cy="690" r="0.9" />
+    <circle cx="990" cy="670" r="1" />
+    <circle cx="1110" cy="730" r="0.8" />
+    <circle cx="1230" cy="650" r="1.2" />
+    <circle cx="1350" cy="700" r="0.7" />
+    <circle cx="1470" cy="680" r="1" />
+    <circle cx="1590" cy="720" r="0.9" />
+    <circle cx="1710" cy="660" r="1.1" />
+    <circle cx="1830" cy="710" r="0.8" />
+    <circle cx="1950" cy="690" r="1" />
+    
+    <!-- Row 8 -->
+    <circle cx="300" cy="800" r="0.8" />
+    <circle cx="420" cy="780" r="1" />
+    <circle cx="540" cy="820" r="0.9" />
+    <circle cx="660" cy="760" r="1.1" />
+    <circle cx="780" cy="810" r="0.7" />
+    <circle cx="900" cy="790" r="1.2" />
+    <circle cx="1020" cy="770" r="0.8" />
+    <circle cx="1140" cy="830" r="1" />
+    <circle cx="1260" cy="750" r="0.9" />
+    <circle cx="1380" cy="800" r="1.1" />
+    <circle cx="1500" cy="780" r="0.7" />
+    <circle cx="1620" cy="820" r="1" />
+    <circle cx="1740" cy="760" r="0.8" />
+    <circle cx="1860" cy="810" r="1.2" />
+    <circle cx="1980" cy="790" r="0.9" />
+    
+    <!-- Row 9 -->
+    <circle cx="330" cy="900" r="1.1" />
+    <circle cx="450" cy="880" r="0.7" />
+    <circle cx="570" cy="920" r="1" />
+    <circle cx="690" cy="860" r="0.8" />
+    <circle cx="810" cy="910" r="1.2" />
+    <circle cx="930" cy="890" r="0.9" />
+    <circle cx="1050" cy="870" r="1" />
+    <circle cx="1170" cy="930" r="0.7" />
+    <circle cx="1290" cy="850" r="1.1" />
+    <circle cx="1410" cy="900" r="0.8" />
+    <circle cx="1530" cy="880" r="1" />
+    <circle cx="1650" cy="920" r="0.9" />
+    <circle cx="1770" cy="860" r="1.2" />
+    <circle cx="1890" cy="910" r="0.7" />
+    <circle cx="2010" cy="890" r="1" />
+    
+    <!-- Row 10 -->
+    <circle cx="360" cy="1000" r="0.9" />
+    <circle cx="480" cy="980" r="1.1" />
+    <circle cx="600" cy="1020" r="0.7" />
+    <circle cx="720" cy="960" r="1" />
+    <circle cx="840" cy="1010" r="0.8" />
+    <circle cx="960" cy="990" r="1.2" />
+    <circle cx="1080" cy="970" r="0.9" />
+    <circle cx="1200" cy="1030" r="1" />
+    <circle cx="1320" cy="950" r="0.7" />
+    <circle cx="1440" cy="1000" r="1.1" />
+    <circle cx="1560" cy="980" r="0.8" />
+    <circle cx="1680" cy="1020" r="1" />
+    <circle cx="1800" cy="960" r="0.9" />
+    <circle cx="1920" cy="1010" r="1.2" />
+    <circle cx="2040" cy="990" r="0.7" />
+  </g>
+  
+  <!-- Medium stars with glow -->
+  <g fill="#FFFFFF" filter="url(#glow)">
+    <circle cx="400" cy="200" r="2" />
+    <circle cx="1200" cy="300" r="2.2" />
+    <circle cx="800" cy="500" r="1.8" />
+    <circle cx="1600" cy="700" r="2" />
+    <circle cx="300" cy="900" r="1.9" />
+    <circle cx="1100" cy="100" r="2.1" />
+    <circle cx="1700" cy="400" r="1.7" />
+    <circle cx="500" cy="800" r="2" />
+    <circle cx="900" cy="950" r="1.8" />
+    <circle cx="1500" cy="600" r="2.2" />
+  </g>
+  
+  <!-- Large stars with cyan glow -->
+  <g fill="#00E5FF" filter="url(#cyanGlow)">
+    <circle cx="600" cy="300" r="3" />
+    <circle cx="1400" cy="800" r="3.5" />
+    <circle cx="200" cy="700" r="3.2" />
+  </g>
+  
+  <!-- Large stars with gold glow -->
+  <g fill="#FFB547" filter="url(#goldGlow)">
+    <circle cx="1000" cy="200" r="3.5" />
+    <circle cx="1800" cy="500" r="3" />
+  </g>
+</svg>
