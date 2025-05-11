@@ -45,7 +45,7 @@ This website is built with modern HTML, CSS, and JavaScript, making it easy to m
 
 ## Deployment
 
-This website is deployed using GitHub Pages from the main branch.
+This website is deployed using GitHub Pages from the main branch with a custom domain at [author-andrewjgreen.com](https://author-andrewjgreen.com).
 
 ## Author
 
