@@ -608,7 +608,7 @@ img {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 80px; /* Reduced padding for desktop */
+    padding-top: 100px; /* Increased padding for desktop */
     z-index: 1;
 }
 
@@ -620,7 +620,9 @@ img {
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 140px; /* Even more padding on small screens */
+        padding-top: 160px; /* Even more padding on small screens */
+        height: auto; /* Allow the hero section to expand as needed */
+        min-height: 100vh; /* Ensure it takes at least the full viewport height */
     }
 }
 
@@ -706,6 +708,9 @@ img {
     position: relative;
     z-index: 2;
     padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .author-avatar {
@@ -718,8 +723,8 @@ img {
     overflow: hidden;
     animation: fadeInUp 1s ease-out;
     position: relative;
-    z-index: 1010; /* Higher than the header z-index (1000) */
-    margin-top: 20px; /* Adjusted to prevent being cut off at the top */
+    z-index: 5; /* Lower z-index to ensure proper stacking */
+    margin-top: 40px; /* Increased to provide more space at the top */
 }
 
 .author-avatar img {
@@ -775,7 +780,7 @@ img {
 
 /* New Book Announcement */
 .new-book-announcement {
-    margin: var(--spacing-md) auto;
+    margin: var(--spacing-xl) auto var(--spacing-md) auto; /* Increased top margin to move it down */
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 50, 100, 0.7));
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-md);
@@ -786,6 +791,7 @@ img {
     animation: glow-pulse 3s infinite alternate, fadeInUp 1s ease-out 0.5s forwards;
     opacity: 0;
     max-width: 600px;
+    z-index: 5; /* Ensure proper stacking */
 }
 
 @keyframes glow-pulse {
@@ -871,13 +877,17 @@ img {
     .announcement-details {
         text-align: center;
     }
+
+    .new-book-announcement {
+        margin-top: var(--spacing-xxl); /* Even more top margin on mobile */
+    }
 }
 
 .trust-strip {
     display: flex;
     justify-content: center;
     gap: var(--spacing-lg);
-    margin-top: var(--spacing-lg);
+    margin-top: var(--spacing-xl); /* Increased top margin */
     padding-top: var(--spacing-md);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     animation: fadeInUp 1s ease-out 0.6s forwards;
