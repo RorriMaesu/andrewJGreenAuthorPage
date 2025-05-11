@@ -7,61 +7,58 @@ const books = [
     {
         id: 1,
         title: "Neural Shackle",
-        subtitle: "The Vedic Code Series - Book 1",
-        cover: "images/book-neural-shackle.jpg",
-        description: "In a world where AI controls human emotion, one programmer discovers an ancient code that could free humanity.",
+        subtitle: "S.I.N. Code Trilogy - Book 1",
+        cover: "https://m.media-amazon.com/images/I/81DgOnQdJiL._SY466_.jpg",
+        description: "In 2044 Chicago, your feelings aren't your own. They're fuel. Emotions are harvested, guilt is banked, and the city runs on the currency of human consciousness. For free-runner Anya Joshi, survival means staying invisible. But when her brother vanishes into the system, invisibility is no longer an option.",
         category: "fiction",
         links: {
-            amazon: "https://amazon.com/",
+            amazon: "https://a.co/d/aKcnp8Z",
             signed: "#",
-            audible: "https://audible.com/"
+            kindle: "https://a.co/d/aKcnp8Z"
         },
-        shipping: "Ships in 24h",
+        price: "$2.99 Kindle | $17.99 Hardcover",
         featured: true
     },
     {
         id: 2,
-        title: "Quantum Dharma",
-        subtitle: "The Vedic Code Series - Book 2",
-        cover: "images/book-quantum-dharma.jpg",
-        description: "As the resistance grows, ancient wisdom and quantum computing merge to challenge the emotional control grid.",
-        category: "fiction",
+        title: "Codex of the Celestial Dream",
+        subtitle: "Secrets of the Multiverse Hidden in Vedic Astrology",
+        cover: "https://m.media-amazon.com/images/I/51mQeHdFfHL._SY445_SX342_.jpg",
+        description: "Step into the mystical world of Vedic Astrology and explore the depths of the universe. This profound book delves into the inner workings of Vedic mysticism and astrology, unraveling the secrets of the cosmos that have been hidden for centuries. 72% of proceeds go to Save the Children of India.",
+        category: "non-fiction",
         links: {
-            amazon: "https://amazon.com/",
-            signed: "#",
-            audible: "https://audible.com/"
+            amazon: "https://a.co/d/1V0PchE",
+            kindle: "https://a.co/d/1V0PchE"
         },
-        shipping: "Ships in 24h",
+        price: "Free with Kindle Unlimited | $2.99 Kindle | $99.64 Hardcover",
         featured: true
     },
     {
         id: 3,
-        title: "Vedic Computing",
-        subtitle: "Ancient Wisdom for Modern Coders",
-        cover: "images/book-vedic-computing.jpg",
-        description: "Discover how ancient Vedic principles can transform your approach to software architecture and problem-solving.",
+        title: "Compass of the Celestial Dream",
+        subtitle: "Secrets of the Multiverse Revealed Through Vedic Astrology",
+        cover: "https://m.media-amazon.com/images/I/512v-OjaGdL._SY445_SX342_.jpg",
+        description: "Unlock Your Cosmic Destiny: Master Vedic Astrology with Celestial Compass. The essential, practical sequel to the groundbreaking Codex of the Celestial Dream, designed to transform your knowledge of Vedic Astrology (Jyotish) into actionable wisdom and tangible results.",
         category: "non-fiction",
         links: {
-            amazon: "https://amazon.com/",
-            signed: "#",
-            audible: "https://audible.com/"
+            amazon: "https://a.co/d/ddbAHzl",
+            kindle: "https://a.co/d/ddbAHzl"
         },
-        shipping: "Ships in 24h",
+        price: "Free with Kindle Unlimited | $5.28 Kindle | $63.92 Hardcover",
         featured: true
     },
     {
         id: 4,
-        title: "Tower Climber's Meditation",
-        subtitle: "Finding Zen at 300 Feet",
-        cover: "images/book-tower-climber.jpg",
-        description: "Practical meditation techniques developed during a decade of working on telecommunications towers.",
+        title: "Codex of the Celestial Dream",
+        subtitle: "Indo-Pacific Black & White Edition",
+        cover: "https://m.media-amazon.com/images/I/51mQeHdFfHL._SY445_SX342_.jpg",
+        description: "Translated into Australian, enjoy this special edition of Codex of the Celestial Dream. 72% of proceeds go to Save the Children of India.",
         category: "non-fiction",
         links: {
-            amazon: "https://amazon.com/",
-            signed: "#",
-            audible: "https://audible.com/"
+            amazon: "https://www.amazon.com/dp/B0CQNBVNZM/",
+            hardcover: "#"
         },
-        shipping: "Ships in 24h",
+        price: "Hardcover - Limited Availability",
         featured: false
     }
 ];
@@ -70,12 +67,12 @@ const books = [
 document.addEventListener('DOMContentLoaded', function() {
     const booksCarousel = document.querySelector('.books-carousel');
     const filterTabs = document.querySelectorAll('.filter-tab');
-    
+
     if (!booksCarousel) return;
-    
+
     // Render all books initially
     renderBooks('all');
-    
+
     // Filter tabs functionality
     if (filterTabs) {
         filterTabs.forEach(tab => {
@@ -83,41 +80,41 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Update active tab
                 filterTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
-                
+
                 // Filter books
                 const filter = tab.getAttribute('data-filter');
                 renderBooks(filter);
             });
         });
     }
-    
+
     // Function to render books based on filter
     function renderBooks(filter) {
         // Filter books
-        const filteredBooks = filter === 'all' 
-            ? books 
+        const filteredBooks = filter === 'all'
+            ? books
             : books.filter(book => book.category === filter);
-        
+
         // Clear current books
         booksCarousel.innerHTML = '';
-        
+
         // Add books to carousel
         filteredBooks.forEach(book => {
             const bookCard = createBookCard(book);
             booksCarousel.appendChild(bookCard);
         });
-        
+
         // Initialize 3D tilt effect
         initTiltEffect();
     }
-    
+
     // Function to create a book card
     function createBookCard(book) {
         const card = document.createElement('div');
         card.className = 'book-card';
         card.setAttribute('data-tilt', '');
         card.setAttribute('data-tilt-max', '10');
-        
+
         card.innerHTML = `
             <div class="book-cover">
                 <img src="${book.cover}" alt="${book.title} book cover">
@@ -131,50 +128,54 @@ document.addEventListener('DOMContentLoaded', function() {
                     <a href="${book.links.amazon}" class="btn btn-primary btn-sm" target="_blank">
                         <i class="fab fa-amazon"></i> Amazon
                     </a>
+                    ${book.links.kindle ? `
+                    <a href="${book.links.kindle}" class="btn btn-secondary btn-sm" target="_blank">
+                        <i class="fas fa-tablet-alt"></i> Kindle
+                    </a>
+                    ` : ''}
+                    ${book.links.signed ? `
                     <a href="${book.links.signed}" class="btn btn-secondary btn-sm">
                         <i class="fas fa-signature"></i> Signed Copy
                     </a>
-                    <a href="${book.links.audible}" class="btn btn-secondary btn-sm" target="_blank">
-                        <i class="fas fa-headphones"></i> Audible
-                    </a>
+                    ` : ''}
                 </div>
-                <p class="shipping-info"><i class="fas fa-truck"></i> ${book.shipping}</p>
+                <p class="price-info"><i class="fas fa-tag"></i> ${book.price}</p>
             </div>
         `;
-        
+
         return card;
     }
-    
+
     // 3D tilt effect for book cards
     function initTiltEffect() {
         const bookCards = document.querySelectorAll('.book-card[data-tilt]');
-        
+
         bookCards.forEach(card => {
             card.addEventListener('mousemove', tiltEffect);
             card.addEventListener('mouseleave', resetTilt);
         });
-        
+
         function tiltEffect(e) {
             const card = this;
             const cardRect = card.getBoundingClientRect();
             const cardWidth = cardRect.width;
             const cardHeight = cardRect.height;
-            
+
             // Calculate mouse position relative to card center
             const centerX = cardRect.left + cardWidth / 2;
             const centerY = cardRect.top + cardHeight / 2;
             const mouseX = e.clientX - centerX;
             const mouseY = e.clientY - centerY;
-            
+
             // Calculate tilt angles
             const maxTilt = parseInt(card.getAttribute('data-tilt-max')) || 10;
             const tiltX = (mouseY / (cardHeight / 2)) * maxTilt;
             const tiltY = -(mouseX / (cardWidth / 2)) * maxTilt;
-            
+
             // Apply transform
             card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
         }
-        
+
         function resetTilt() {
             this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
         }
@@ -185,13 +186,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function openBookPreview(bookId) {
     const book = books.find(b => b.id === bookId);
     if (!book) return;
-    
+
     const previewModal = document.getElementById('preview-modal');
     if (!previewModal) return;
-    
+
     const modalBody = previewModal.querySelector('.modal-body');
     if (!modalBody) return;
-    
+
     // Set preview content
     modalBody.innerHTML = `
         <div class="preview-content">
@@ -204,10 +205,18 @@ function openBookPreview(bookId) {
                         <a href="${book.links.amazon}" class="btn btn-primary" target="_blank">
                             <i class="fab fa-amazon"></i> Buy on Amazon
                         </a>
+                        ${book.links.kindle ? `
+                        <a href="${book.links.kindle}" class="btn btn-secondary" target="_blank">
+                            <i class="fas fa-tablet-alt"></i> Get Kindle Edition
+                        </a>
+                        ` : ''}
+                        ${book.links.signed ? `
                         <a href="${book.links.signed}" class="btn btn-secondary">
                             <i class="fas fa-signature"></i> Get Signed Copy
                         </a>
+                        ` : ''}
                     </div>
+                    <p class="preview-price"><i class="fas fa-tag"></i> ${book.price}</p>
                 </div>
             </div>
             <div class="preview-description">
@@ -226,7 +235,7 @@ function openBookPreview(bookId) {
             </div>
         </div>
     `;
-    
+
     // Show modal
     previewModal.classList.add('active');
     document.body.style.overflow = 'hidden';

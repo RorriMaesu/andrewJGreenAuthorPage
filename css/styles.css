@@ -1,4 +1,4 @@
-/* 
+/*
  * Author Website Styles
  * Andrew J. Green
  */
@@ -12,7 +12,7 @@
     --solar-gold: #FFB547;
     --off-white: #F2F6FA;
     --slate-grey: #A2A9B3;
-    
+
     /* Dark Theme (Default) */
     --bg-primary: var(--midnight-black);
     --bg-secondary: #161822;
@@ -20,24 +20,24 @@
     --text-secondary: var(--slate-grey);
     --accent-primary: var(--neon-cyan);
     --accent-secondary: var(--solar-gold);
-    
+
     /* Typography */
     --font-heading: 'Poppins', sans-serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    
+
     /* Spacing */
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
     --spacing-xl: 8rem;
-    
+
     /* Borders */
     --border-radius-sm: 4px;
     --border-radius-md: 8px;
     --border-radius-lg: 16px;
-    
+
     /* Transitions */
     --transition-fast: 0.2s ease;
     --transition-medium: 0.3s ease;
@@ -336,27 +336,179 @@ img {
     h1 {
         font-size: 2.5rem;
     }
-    
+
     h2 {
         font-size: 2rem;
     }
-    
+
     .nav-links {
         display: none;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
     .hero-cta {
         flex-direction: column;
     }
-    
+
     .trust-strip {
         flex-direction: column;
         align-items: center;
     }
+}
+
+/* ===== Reviews Section ===== */
+.reviews-section {
+    padding: var(--spacing-lg) 0;
+    background-color: var(--bg-secondary);
+}
+
+.overall-rating {
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rating-book h3 {
+    margin-bottom: var(--spacing-xs);
+}
+
+.rating-stars {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.rating-value {
+    font-size: 1rem;
+    margin-left: var(--spacing-xs);
+    vertical-align: middle;
+}
+
+.rating-count {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.reviews-carousel {
+    display: flex;
+    gap: var(--spacing-md);
+    transition: transform var(--transition-medium);
+    margin: var(--spacing-md) 0;
+}
+
+.review-card {
+    flex: 0 0 350px;
+    background-color: var(--bg-primary);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.review-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.review-rating {
+    display: flex;
+    gap: 2px;
+}
+
+.review-source {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.verified-badge {
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    margin-top: 4px;
+}
+
+.review-text {
+    flex-grow: 1;
+    margin-bottom: var(--spacing-sm);
+}
+
+.review-text p {
+    font-style: italic;
+}
+
+.review-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.review-author {
+    font-weight: 600;
+}
+
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.review-date {
+    font-style: italic;
+}
+
+.carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-primary);
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all var(--transition-fast);
+}
+
+.carousel-nav.prev {
+    left: -20px;
+}
+
+.carousel-nav.next {
+    right: -20px;
+}
+
+.carousel-nav:hover {
+    background-color: var(--accent-primary);
+    color: var(--bg-primary);
+}
+
+.carousel-nav.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 /* More sections will be added in subsequent edits */
