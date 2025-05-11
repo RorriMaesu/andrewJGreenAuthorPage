@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initThemeToggle();
     initModals();
+    initBookFilters();
 
     // These will be initialized by the router when needed
     // based on which page is currently active
@@ -270,6 +271,58 @@ function initBookCarousel() {
  */
 function initReviewsCarousel() {
     // Will be implemented when reviews.js is loaded
+}
+
+/**
+ * Book filter functionality for the home page
+ */
+function initBookFilters() {
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const booksCarousel = document.querySelector('.books-carousel');
+
+    if (!filterTabs.length || !booksCarousel) return;
+
+    // Add click event listeners to filter tabs
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Update active tab
+            filterTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // Get filter value
+            const filter = tab.getAttribute('data-filter');
+
+            // Filter books
+            if (typeof renderBooks === 'function') {
+                renderBooks(filter);
+            } else if (window.books) {
+                // Fallback if renderBooks function is not available
+                filterBooks(filter);
+            }
+        });
+    });
+
+    // Fallback function to filter books
+    function filterBooks(filter) {
+        // Get all book cards
+        const bookCards = booksCarousel.querySelectorAll('.book-card');
+
+        if (!bookCards.length) return;
+
+        // Show/hide based on filter
+        bookCards.forEach(card => {
+            if (filter === 'all') {
+                card.style.display = '';
+            } else {
+                const category = card.getAttribute('data-category');
+                if (category === filter) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+    }
 }
 
 /**

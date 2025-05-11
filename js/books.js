@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Function to render books based on filter
-    function renderBooks(filter) {
+    // Make it globally accessible
+    window.renderBooks = function(filter) {
         // Filter books
         const filteredBooks = filter === 'all'
             ? books
@@ -101,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.className = 'book-card';
         card.setAttribute('data-tilt', '');
         card.setAttribute('data-tilt-max', '10');
+        card.setAttribute('data-category', book.category);
 
         card.innerHTML = `
             <div class="book-cover">
