@@ -3,7 +3,7 @@
  */
 
 // Book data
-const books = [
+window.books = [
     {
         id: 1,
         title: "Neural Shackle",
@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.renderBooks = function(filter) {
         // Filter books
         const filteredBooks = filter === 'all'
-            ? books
-            : books.filter(book => book.category === filter);
+            ? window.books
+            : window.books.filter(book => book.category === filter);
 
         // Clear current books
         booksCarousel.innerHTML = '';
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Function to open book preview modal
 function openBookPreview(bookId) {
-    const book = books.find(b => b.id === bookId);
+    const book = window.books.find(b => b.id === bookId);
     if (!book) return;
 
     const previewModal = document.getElementById('preview-modal');

@@ -191,10 +191,16 @@ function initBooksPage() {
 
                     // Filter books
                     const category = tab.getAttribute('data-category');
+                    console.log('Category tab clicked:', category); // Debug log
                     renderBooksGrid(category);
                 });
             });
         }
+    } else {
+        console.log('Books page initialization failed:', {
+            booksGridExists: !!booksGrid,
+            windowBooksExists: !!window.books
+        });
     }
 }
 
@@ -203,8 +209,16 @@ function initBooksPage() {
  * @param {string} category - The category to filter by
  */
 function renderBooksGrid(category) {
+    console.log('Rendering books grid with category:', category);
+
     const booksGrid = document.querySelector('.books-grid');
-    if (!booksGrid || !window.books) return;
+    if (!booksGrid || !window.books) {
+        console.error('Cannot render books grid:', {
+            booksGridExists: !!booksGrid,
+            windowBooksExists: !!window.books
+        });
+        return;
+    }
 
     // Clear current books
     booksGrid.innerHTML = '';
@@ -215,11 +229,54 @@ function renderBooksGrid(category) {
         filteredBooks = window.books.filter(book => book.category === category);
     }
 
+    console.log('Filtered books:', filteredBooks.length, 'of', window.books.length);
+
     // Add books to grid
     filteredBooks.forEach(book => {
         const bookCard = createDetailedBookCard(book);
         booksGrid.appendChild(bookCard);
     });
+}
+
+/**
+ * Create a detailed book card for the books page
+ * @param {Object} book - The book data
+ * @returns {HTMLElement} - The book card element
+ */
+function createDetailedBookCard(book) {
+    const card = document.createElement('div');
+    card.className = 'book-card';
+    card.setAttribute('data-category', book.category);
+
+    card.innerHTML = `
+        <div class="book-cover">
+            <img src="${book.cover}" alt="${book.title} book cover">
+            ${book.featured ? '<span class="featured-badge">Featured</span>' : ''}
+        </div>
+        <div class="book-info">
+            <h3>${book.title}</h3>
+            <p class="book-subtitle">${book.subtitle}</p>
+            <p class="book-description">${book.description}</p>
+            <div class="book-links">
+                <a href="${book.links.amazon}" class="btn btn-primary" target="_blank">
+                    <i class="fab fa-amazon"></i> Buy on Amazon
+                </a>
+                ${book.links.kindle ? `
+                <a href="${book.links.kindle}" class="btn btn-secondary" target="_blank">
+                    <i class="fas fa-tablet-alt"></i> Get Kindle Edition
+                </a>
+                ` : ''}
+                ${book.links.signed ? `
+                <a href="${book.links.signed}" class="btn btn-secondary">
+                    <i class="fas fa-signature"></i> Get Signed Copy
+                </a>
+                ` : ''}
+            </div>
+            <p class="price-info"><i class="fas fa-tag"></i> ${book.price}</p>
+        </div>
+    `;
+
+    return card;
 }
 
 /**
