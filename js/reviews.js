@@ -6,17 +6,6 @@
 const reviews = [
     {
         id: 1,
-        text: "Great for beginners or seasoned astrologers. I really enjoyed this book and learned a lot in the process.",
-        author: "Andrew Green",
-        source: "Amazon",
-        rating: 5,
-        book: "Codex of the Celestial Dream",
-        featured: true,
-        verified: true,
-        date: "Aug 7, 2023"
-    },
-    {
-        id: 2,
         text: "A wild and vivid journey through the Nakshatras. Be forewarned that there are a lot of very unusual drawings and depictions in this book, but nevertheless, it's one of the best books on Nakshatras around. I have a huge collection of books on the Nakshatras, and this is one of the best. The author clearly understands his subject and communicates well about them.",
         author: "Haf",
         source: "Amazon",
@@ -27,7 +16,7 @@ const reviews = [
         date: "June 9, 2024"
     },
     {
-        id: 3,
+        id: 2,
         text: "Beautifully written! Incredible book! Very thorough and well written. Easy to learn the nakshatras through his way of writing. I highly recommend for all those who are interested into taking a deeper dive into Vedic Astrology!",
         author: "Kristal Grice",
         source: "Amazon",
@@ -38,7 +27,7 @@ const reviews = [
         date: "Apr 8, 2023"
     },
     {
-        id: 4,
+        id: 3,
         text: "Influential for Western to Vedic astrologers. If you are just beginning your studies in astrology or a professional Western astrologer this book bridges the gap to understanding jyotish. Beautifully illustrated and thought provoking. Highly recommend.",
         author: "Amazon Customer (Vay)",
         source: "Amazon",
@@ -49,7 +38,7 @@ const reviews = [
         date: "Apr 10, 2023"
     },
     {
-        id: 5,
+        id: 4,
         text: "Very informative and knowledgeable. Really loving this book so much! Anyone interested in all things celestial will benefit from this work of art. Thank you 🙏",
         author: "Amberlove",
         source: "Amazon",
@@ -60,7 +49,7 @@ const reviews = [
         date: "Apr 8, 2023"
     },
     {
-        id: 6,
+        id: 5,
         text: "Vedic Astrology Explained. Simplified explanation of Ancient Science of predictions. Vedic Astrology...",
         author: "Shravan (India)",
         source: "Amazon",
@@ -206,7 +195,7 @@ function initReviewsCarousel() {
         const newCardMargin = parseInt(window.getComputedStyle(cards[0]).marginRight);
 
         // Update total width
-        totalWidth = newCardWidth + newCardMargin;
+        const totalWidth = newCardWidth + newCardMargin;
 
         // Adjust current index if needed
         const maxIndex = cards.length - getVisibleCards();

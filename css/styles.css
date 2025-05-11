@@ -931,6 +931,10 @@ img {
         font-size: 3.5rem;
     }
 
+    h2 {
+        font-size: 2.5rem;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-lg);
@@ -944,6 +948,18 @@ img {
     .about-content {
         order: 1;
     }
+
+    .books-carousel {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+
+    .blog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .reviews-carousel .review-card {
+        flex: 0 0 320px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -955,6 +971,14 @@ img {
         font-size: 2.25rem;
     }
 
+    .section-title {
+        font-size: 2.25rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
     .nav-links {
         display: none;
     }
@@ -963,9 +987,14 @@ img {
         display: flex;
     }
 
+    .hero-content {
+        padding: var(--spacing-md);
+    }
+
     .hero-cta {
         flex-direction: column;
         width: 100%;
+        gap: var(--spacing-sm);
     }
 
     .hero-cta .btn {
@@ -984,6 +1013,56 @@ img {
 
     .filter-tabs {
         flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+
+    .filter-tab {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .review-card {
+        padding: var(--spacing-md);
+    }
+
+    .review-rating {
+        font-size: 1rem;
+    }
+
+    .review-text p {
+        font-size: 0.95rem;
+    }
+
+    .carousel-nav {
+        width: 40px;
+        height: 40px;
+    }
+
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .play-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .newsletter-box {
+        padding: var(--spacing-md);
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .newsletter-form .form-group {
+        width: 100%;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .newsletter-form button {
+        width: 100%;
     }
 }
 
@@ -996,12 +1075,74 @@ img {
         font-size: 1.75rem;
     }
 
+    h3 {
+        font-size: 1.5rem;
+    }
+
     .hero-subtitle {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     .section-title {
-        font-size: 2rem;
+        font-size: 1.85rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.85rem;
+    }
+
+    .trust-item {
+        font-size: 0.8rem;
+    }
+
+    .book-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .photo-stack:hover .photo-1,
+    .photo-stack:hover .photo-2,
+    .photo-stack:hover .photo-3 {
+        transform: none;
+    }
+
+    .review-card {
+        padding: var(--spacing-sm);
+    }
+
+    .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    .review-source {
+        align-items: flex-start;
+    }
+
+    .event-details {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    .timeline-content {
+        padding: var(--spacing-sm);
+    }
+
+    .final-cta h2 {
+        font-size: 1.75rem;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+
+    .modal-body {
+        padding: var(--spacing-sm);
     }
 }
 
