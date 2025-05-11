@@ -32,11 +32,19 @@ function initNavigation() {
     // Mobile menu toggle
     const menuToggle = document.querySelector('.mobile-menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const siteHeader = document.querySelector('.site-header');
 
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navLinks.classList.toggle('active');
+
+            // Add background to header when mobile menu is active
+            if (navLinks.classList.contains('active')) {
+                siteHeader.classList.add('menu-active');
+            } else {
+                siteHeader.classList.remove('menu-active');
+            }
         });
     }
 

@@ -49,9 +49,11 @@ function initRouter() {
                 // Close mobile menu if open
                 const menuToggle = document.querySelector('.mobile-menu-toggle');
                 const navLinks = document.querySelector('.nav-links');
+                const siteHeader = document.querySelector('.site-header');
                 if (menuToggle && menuToggle.classList.contains('active')) {
                     menuToggle.classList.remove('active');
                     navLinks.classList.remove('active');
+                    siteHeader.classList.remove('menu-active');
                 }
 
                 // If there's a specific section to scroll to
