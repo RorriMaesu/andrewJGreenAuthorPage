@@ -616,6 +616,29 @@ img {
     padding: var(--spacing-lg);
 }
 
+.author-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto var(--spacing-md);
+    border: 3px solid var(--accent-primary);
+    box-shadow: var(--shadow-glow-cyan);
+    overflow: hidden;
+    animation: fadeInUp 1s ease-out;
+}
+
+.author-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform var(--transition-medium);
+}
+
+.author-avatar:hover img {
+    transform: scale(1.1);
+}
+
 .hero-content h1 {
     margin-bottom: var(--spacing-md);
     position: relative;
@@ -868,7 +891,9 @@ img {
     top: 0;
     left: 0;
     z-index: 3;
-    background-image: url('../images/author-portrait.jpg');
+    background-image: url('../images/andrewjgreenauthorphoto.png');
+    background-size: cover;
+    background-position: center top;
     transform: rotate(-5deg);
 }
 
@@ -876,16 +901,22 @@ img {
     top: 10%;
     left: 20%;
     z-index: 2;
-    background-image: url('../images/author-tower.jpg');
+    background-image: url('../images/andrewjgreenauthorphoto.png');
+    background-size: cover;
+    background-position: center;
     transform: rotate(5deg);
+    filter: brightness(0.8) contrast(1.1);
 }
 
 .photo-3 {
     top: 20%;
     left: 10%;
     z-index: 1;
-    background-image: url('../images/author-lab.jpg');
+    background-image: url('../images/andrewjgreenauthorphoto.png');
+    background-size: cover;
+    background-position: center bottom;
     transform: rotate(-3deg);
+    filter: sepia(0.3) brightness(0.9);
 }
 
 .photo-stack:hover .photo-1 {
@@ -977,6 +1008,11 @@ img {
 
     .section-subtitle {
         font-size: 1rem;
+    }
+
+    .author-avatar {
+        width: 100px;
+        height: 100px;
     }
 
     .nav-links {
@@ -1089,6 +1125,21 @@ img {
 
     .section-subtitle {
         font-size: 0.9rem;
+    }
+
+    .author-avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .footer-logo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer-logo-img {
+        width: 50px;
+        height: 50px;
     }
 
     .btn {
@@ -1872,12 +1923,38 @@ img {
     z-index: 1;
 }
 
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.footer-logo-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--accent-primary);
+}
+
+.footer-logo-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.footer-logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer-logo a {
     font-family: var(--font-heading);
     font-weight: 700;
     font-size: 1.8rem;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
     display: inline-block;
 }
 
