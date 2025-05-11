@@ -999,15 +999,7 @@ img {
     line-height: 1.7;
 }
 
-.signature {
-    margin: var(--spacing-md) 0;
-    max-width: 200px;
-}
 
-.signature img {
-    width: 100%;
-    height: auto;
-}
 
 /* ===== Full Page Templates ===== */
 .page-title {
