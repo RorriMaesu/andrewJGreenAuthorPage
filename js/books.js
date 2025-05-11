@@ -51,7 +51,8 @@ window.books = [
         id: 4,
         title: "The 12 Laws of Power",
         subtitle: "Master the Art of Influence Without Compromising Your Integrity",
-        cover: "images/12LawsofPowerCover.png",
+        cover: "images/12LawsofPowerFrontCoverAlone.png",
+        coverWide: "images/12LawsofPowerCover.png", // Wide format cover for the upcoming section
         description: "True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity. This razor-sharp guide combines neuroscience, psychology, and ancient Vedic archetypes to give you the ultimate persuasion toolkit.",
         category: "non-fiction",
         links: {
@@ -287,7 +288,8 @@ window.bookPreviews = [
         id: 4,
         title: "The 12 Laws of Power",
         subtitle: "Master the Art of Influence Without Compromising Your Integrity",
-        cover: "images/12LawsofPowerCover.png",
+        cover: "images/12LawsofPowerFrontCoverAlone.png",
+        coverWide: "images/12LawsofPowerCover.png", // Wide format cover for the upcoming section
         description: "True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity. This razor-sharp guide combines neuroscience, psychology, and ancient Vedic archetypes to give you the ultimate persuasion toolkit.",
         excerpt: `<p>True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity.</p>
         <p>The 12 Laws of Power is a razor-sharp guide to modern influence—where neuroscience, psychology, and ancient Vedic archetypes converge to give you the ultimate persuasion toolkit. This isn't about manipulation; it's about mastery: of perception, timing, emotion, and self.</p>
@@ -335,7 +337,7 @@ function openBookPreview(bookId) {
     modalBody.innerHTML = `
         <div class="preview-content">
             <div class="preview-header">
-                <img src="${book.cover}" alt="${book.title} book cover" class="preview-cover${isWideFormatBook ? ' wide-format' : ''}">
+                <img src="${isWideFormatBook && book.coverWide ? book.coverWide : book.cover}" alt="${book.title} book cover" class="preview-cover${isWideFormatBook ? ' wide-format' : ''}">
                 <div class="preview-info">
                     <h2>${book.title}</h2>
                     <p class="preview-subtitle">${book.subtitle}</p>
