@@ -352,30 +352,51 @@ function initBookFilters() {
 
 /**
  * Newsletter form submission
+ *
+ * For GitHub Pages (static site) implementation, we have two options:
+ * 1. Use the Mailchimp embedded form (recommended for production)
+ * 2. Use this temporary demo solution for testing
  */
-const newsletterForm = document.getElementById('newsletter-form');
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
 
-        // In a real implementation, you would send this data to a server
-        // For now, we'll just show a success message
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
+// For the Mailchimp form
+const mailchimpForm = document.getElementById('mc-embedded-subscribe-form');
+if (mailchimpForm) {
+    // This is just for demo purposes when not using the actual Mailchimp endpoint
+    if (mailchimpForm.getAttribute('action').includes('YOUR_MAILCHIMP_SIGNUP_URL_HERE')) {
+        mailchimpForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        // Simple validation
-        if (!name || !email) {
-            alert('Please fill in all fields');
-            return;
-        }
+            const name = document.getElementById('mce-FNAME').value;
+            const email = document.getElementById('mce-EMAIL').value;
 
-        // Show success message
-        newsletterForm.innerHTML = `
-            <div class="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3>Thank you, ${name}!</h3>
-                <p>Your free pack is on its way to your inbox.</p>
-            </div>
-        `;
-    });
+            // Simple validation
+            if (!name || !email) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Show success message for demo purposes
+            const newsletterBox = document.querySelector('.newsletter-box');
+            if (newsletterBox) {
+                newsletterBox.innerHTML = `
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Thank you, ${name}!</h3>
+                        <p>Your free pack is on its way to your inbox.</p>
+                        <div class="demo-note">
+                            <p><small>Note: This is a demo. In a real implementation, you would be subscribed to the newsletter through Mailchimp.</small></p>
+                            <p><small>To implement this fully, you need to:</small></p>
+                            <ol>
+                                <li><small>Create a Mailchimp account</small></li>
+                                <li><small>Create a list/audience</small></li>
+                                <li><small>Generate an embedded form</small></li>
+                                <li><small>Replace the placeholder form with your Mailchimp form code</small></li>
+                            </ol>
+                        </div>
+                    </div>
+                `;
+            }
+        });
+    }
+    // When using the actual Mailchimp endpoint, the form will submit directly to Mailchimp
 }
