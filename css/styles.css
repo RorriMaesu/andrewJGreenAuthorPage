@@ -386,9 +386,9 @@ img {
 }
 
 .site-header.scrolled, .site-header.menu-active {
-    background-color: rgba(10, 12, 20, 0.85);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba(10, 12, 20, 0.95); /* Increased opacity for better visibility */
+    backdrop-filter: blur(15px); /* Increased blur for better effect */
+    -webkit-backdrop-filter: blur(15px);
     box-shadow: var(--shadow-md);
     padding: var(--spacing-sm) 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -600,19 +600,19 @@ img {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 100px; /* Increased padding to ensure avatar is visible */
+    padding-top: 160px; /* Significantly increased padding to ensure avatar is visible */
     z-index: 1;
 }
 
 @media (max-width: 768px) {
     .hero {
-        padding-top: 120px; /* More padding on mobile */
+        padding-top: 180px; /* More padding on mobile */
     }
 }
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 140px; /* Even more padding on small screens */
+        padding-top: 200px; /* Even more padding on small screens */
     }
 }
 
@@ -710,7 +710,8 @@ img {
     overflow: hidden;
     animation: fadeInUp 1s ease-out;
     position: relative;
-    z-index: 10;
+    z-index: 1010; /* Higher than the header z-index (1000) */
+    margin-top: -60px; /* Pull it up to ensure it's visible */
 }
 
 .author-avatar img {
@@ -1766,6 +1767,7 @@ img {
     .author-avatar {
         width: 100px;
         height: 100px;
+        margin-top: -80px; /* Adjust for mobile */
     }
 
     .main-nav {
@@ -1912,6 +1914,7 @@ img {
     .author-avatar {
         width: 80px;
         height: 80px;
+        margin-top: -100px; /* Adjust for small screens */
     }
 
     .footer-logo {
