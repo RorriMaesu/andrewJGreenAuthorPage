@@ -33,12 +33,16 @@
     --text-secondary: var(--slate-grey);
     --accent-primary: var(--neon-cyan);
     --accent-secondary: var(--solar-gold);
+    --accent-cyan: var(--neon-cyan);
+    --accent-gold: var(--solar-gold);
+    --text-on-accent: var(--midnight-black);
 
     /* Typography - Premium Fonts */
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
     --font-accent: 'Montserrat', sans-serif;
+    --font-serif: 'Playfair Display', serif;
 
     /* Spacing - Golden Ratio */
     --spacing-xxs: 0.382rem;
@@ -55,6 +59,7 @@
     --border-radius-lg: 16px;
     --border-radius-xl: 24px;
     --border-radius-pill: 9999px;
+    --border-radius-full: 50%;
 
     /* Shadows */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -81,6 +86,9 @@
     --text-secondary: #4A4B57;
     --accent-primary: #0077B6;
     --accent-secondary: #E09F3E;
+    --accent-cyan: #0077B6;
+    --accent-gold: #E09F3E;
+    --text-on-accent: #FFFFFF;
 
     /* Light Theme Gradients */
     --gradient-cosmic: linear-gradient(135deg, #EEF2FF 0%, #C7D2FE 100%);
@@ -1242,7 +1250,7 @@ img {
     left: 0;
     width: 80px;
     height: 4px;
-    background: var(--gradient-primary);
+    background: var(--gradient-cyber);
     border-radius: 2px;
 }
 
