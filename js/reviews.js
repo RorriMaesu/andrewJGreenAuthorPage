@@ -13,7 +13,7 @@ const reviews = [
         book: "Codex of the Celestial Dream",
         featured: true,
         verified: false,
-        date: "June 9, 2024"
+        date: "June 9, 2025"
     },
     {
         id: 2,

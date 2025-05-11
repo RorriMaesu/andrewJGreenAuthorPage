@@ -7,7 +7,7 @@ const events = [
     {
         id: 1,
         title: "Neural Shackle Book Club Discussion",
-        date: "2024-06-15",
+        date: "2025-06-15",
         time: "7:00 PM",
         location: "Virtual Event (Zoom)",
         description: "Join our online book club discussion of Neural Shackle. We'll explore the dystopian world where emotions are harvested and discuss the philosophical themes of the novel.",
@@ -17,7 +17,7 @@ const events = [
     {
         id: 2,
         title: "Vedic Astrology Basics Webinar",
-        date: "2024-07-10",
+        date: "2025-07-10",
         time: "2:00 PM",
         location: "Online",
         description: "A beginner-friendly introduction to Vedic Astrology based on concepts from Codex of the Celestial Dream. Learn about the fundamental principles that can help you understand your cosmic blueprint.",
@@ -27,7 +27,7 @@ const events = [
     {
         id: 3,
         title: "S.I.N. Code Trilogy Book 2 Announcement",
-        date: "2024-08-20",
+        date: "2025-08-20",
         time: "12:00 PM",
         location: "Social Media & Newsletter",
         description: "Stay tuned for a special announcement about the second book in the S.I.N. Code Trilogy. Subscribers to the newsletter will receive exclusive content and early access.",
@@ -37,7 +37,7 @@ const events = [
     {
         id: 4,
         title: "Practical Vedic Astrology Workshop",
-        date: "2024-09-15",
+        date: "2025-09-15",
         time: "10:00 AM - 4:00 PM",
         location: "Virtual Workshop",
         description: "An in-depth workshop based on Compass of the Celestial Dream, focusing on practical applications of Vedic Astrology in your daily life. Limited spots available.",
@@ -47,7 +47,7 @@ const events = [
     {
         id: 5,
         title: "Author Q&A Session",
-        date: "2024-10-05",
+        date: "2025-10-05",
         time: "6:30 PM",
         location: "Instagram Live",
         description: "Join me for a live Q&A session where I'll answer your questions about my books, the writing process, and the intersection of technology and spirituality in my work.",

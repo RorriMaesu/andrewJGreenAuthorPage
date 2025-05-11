@@ -9,7 +9,7 @@ const blogPosts = [
         title: "The S.I.N. Code: Exploring Emotion as Currency",
         excerpt: "A deep dive into the dystopian world of Neural Shackle, where human emotions are harvested and guilt is banked.",
         image: "images/blog-neural-shackle.jpg",
-        date: "2024-05-01",
+        date: "2025-05-01",
         category: "Fiction",
         url: "#",
         featured: true
@@ -19,7 +19,7 @@ const blogPosts = [
         title: "Understanding Nakshatras: The Lunar Mansions",
         excerpt: "How the 27 Nakshatras of Vedic Astrology offer profound insights into your personality and life path.",
         image: "images/blog-nakshatras.jpg",
-        date: "2024-04-15",
+        date: "2025-04-15",
         category: "Vedic Astrology",
         url: "#",
         featured: true
@@ -29,7 +29,7 @@ const blogPosts = [
         title: "From Theory to Practice: Applying Vedic Wisdom",
         excerpt: "Practical techniques from Compass of the Celestial Dream that you can implement in your daily life.",
         image: "images/blog-vedic-practice.jpg",
-        date: "2024-03-22",
+        date: "2025-03-22",
         category: "Spirituality",
         url: "#",
         featured: true
@@ -39,7 +39,7 @@ const blogPosts = [
         title: "The Connection Between Code and Consciousness",
         excerpt: "Exploring the fascinating parallels between software architecture and the structure of human consciousness.",
         image: "images/blog-code-consciousness.jpg",
-        date: "2024-02-18",
+        date: "2025-02-18",
         category: "Philosophy",
         url: "#",
         featured: false
@@ -49,7 +49,7 @@ const blogPosts = [
         title: "Supporting Save the Children of India",
         excerpt: "Why I've chosen to donate 72% of proceeds from Codex of the Celestial Dream to this important cause.",
         image: "images/blog-charity.jpg",
-        date: "2024-01-05",
+        date: "2025-01-05",
         category: "Charity",
         url: "#",
         featured: false
