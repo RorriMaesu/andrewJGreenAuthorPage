@@ -46,6 +46,27 @@ function initNavigation() {
                 siteHeader.classList.remove('menu-active');
             }
         });
+
+        // Close mobile menu when clicking on a nav link
+        const mobileNavLinks = document.querySelectorAll('.nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                siteHeader.classList.remove('menu-active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') &&
+                !navLinks.contains(e.target) &&
+                !menuToggle.contains(e.target)) {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+                siteHeader.classList.remove('menu-active');
+            }
+        });
     }
 
     // Smooth scrolling for anchor links (only for same-page anchors, not page navigation)
