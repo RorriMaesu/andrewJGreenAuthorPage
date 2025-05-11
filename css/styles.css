@@ -600,19 +600,19 @@ img {
     align-items: center;
     position: relative;
     overflow: hidden;
-    padding-top: 160px; /* Significantly increased padding to ensure avatar is visible */
+    padding-top: 80px; /* Reduced padding for desktop */
     z-index: 1;
 }
 
 @media (max-width: 768px) {
     .hero {
-        padding-top: 180px; /* More padding on mobile */
+        padding-top: 120px; /* More padding on mobile */
     }
 }
 
 @media (max-width: 480px) {
     .hero {
-        padding-top: 200px; /* Even more padding on small screens */
+        padding-top: 140px; /* Even more padding on small screens */
     }
 }
 
@@ -711,7 +711,7 @@ img {
     animation: fadeInUp 1s ease-out;
     position: relative;
     z-index: 1010; /* Higher than the header z-index (1000) */
-    margin-top: -60px; /* Pull it up to ensure it's visible */
+    margin-top: 20px; /* Adjusted to prevent being cut off at the top */
 }
 
 .author-avatar img {
