@@ -885,6 +885,10 @@ img {
     padding-top: 150%; /* 2:3 aspect ratio */
 }
 
+.book-cover.wide-format {
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
 .book-cover img {
     position: absolute;
     top: 0;
@@ -893,6 +897,10 @@ img {
     height: 100%;
     object-fit: cover;
     transition: transform var(--transition-medium);
+}
+
+.book-cover.wide-format img {
+    object-fit: contain;
 }
 
 .book-card:hover .book-cover img {
@@ -1316,6 +1324,11 @@ img {
     border-radius: var(--border-radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
+}
+
+/* Special styling for the 12 Laws of Power book which has a wide format cover */
+.upcoming-book:first-child .upcoming-book-cover {
+    flex: 0 0 350px;
 }
 
 .upcoming-book-cover img {
@@ -2851,6 +2864,23 @@ img {
         gap: var(--spacing-sm);
         text-align: center;
     }
+
+    /* Responsive styles for wide format book cover */
+    .preview-cover.wide-format {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    .upcoming-book:first-child .upcoming-book-info {
+        flex-direction: column;
+    }
+
+    .upcoming-book:first-child .upcoming-book-cover {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: var(--spacing-md);
+    }
 }
 
 @media (max-width: 480px) {
@@ -2868,6 +2898,24 @@ img {
 
     .modal-body {
         padding: var(--spacing-md);
+    }
+
+    /* Mobile styles for book preview */
+    .preview-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .preview-cover, .preview-cover.wide-format {
+        width: 100%;
+        max-width: 200px;
+        margin-bottom: var(--spacing-md);
+    }
+
+    /* Mobile styles for book cards */
+    .book-cover.wide-format {
+        padding-top: 75%; /* Adjust aspect ratio for mobile */
     }
 }
 
@@ -2984,6 +3032,11 @@ img {
     width: 200px;
     border-radius: var(--border-radius-md);
     box-shadow: var(--shadow-lg);
+}
+
+.preview-cover.wide-format {
+    width: 300px;
+    object-fit: contain;
 }
 
 .preview-info {

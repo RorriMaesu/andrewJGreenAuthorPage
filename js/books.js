@@ -127,8 +127,11 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('upcoming-book');
         }
 
+        // Check if this is The 12 Laws of Power book (which has a wide format cover)
+        const isWideFormatBook = book.id === 4;
+
         card.innerHTML = `
-            <div class="book-cover">
+            <div class="book-cover${isWideFormatBook ? ' wide-format' : ''}">
                 <img src="${book.cover}" alt="${book.title} book cover">
                 ${book.featured ? '<span class="featured-badge">Featured</span>' : ''}
                 ${book.upcoming ? '<span class="upcoming-badge">Coming June 14th</span>' : ''}
@@ -326,10 +329,13 @@ function openBookPreview(bookId) {
     if (!modalBody) return;
 
     // Set preview content
+    // Check if this is The 12 Laws of Power book (which has a wide format cover)
+    const isWideFormatBook = book.id === 4;
+
     modalBody.innerHTML = `
         <div class="preview-content">
             <div class="preview-header">
-                <img src="${book.cover}" alt="${book.title} book cover" class="preview-cover">
+                <img src="${book.cover}" alt="${book.title} book cover" class="preview-cover${isWideFormatBook ? ' wide-format' : ''}">
                 <div class="preview-info">
                     <h2>${book.title}</h2>
                     <p class="preview-subtitle">${book.subtitle}</p>
