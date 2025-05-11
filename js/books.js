@@ -104,6 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
         card.setAttribute('data-tilt-max', '10');
         card.setAttribute('data-category', book.category);
 
+        // Log the card creation for debugging
+        console.log('Creating book card with category:', book.category);
+
         card.innerHTML = `
             <div class="book-cover">
                 <img src="${book.cover}" alt="${book.title} book cover">
