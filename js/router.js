@@ -182,22 +182,44 @@ function initBooksPage() {
         renderBooksGrid('all');
 
         // Category tabs functionality
-        if (categoryTabs) {
+        if (categoryTabs && categoryTabs.length > 0) {
+            console.log('Found category tabs:', categoryTabs.length);
+
+            // Remove any existing event listeners (just in case)
             categoryTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
+                const newTab = tab.cloneNode(true);
+                tab.parentNode.replaceChild(newTab, tab);
+            });
+
+            // Re-select the tabs after cloning
+            const refreshedTabs = document.querySelectorAll('.category-tab');
+
+            // Add click event listeners
+            refreshedTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    console.log('Category tab clicked directly');
+
                     // Update active tab
-                    categoryTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
+                    refreshedTabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
 
                     // Filter books
-                    const category = tab.getAttribute('data-category');
-                    console.log('Category tab clicked:', category); // Debug log
+                    const category = this.getAttribute('data-category');
+                    console.log('Category selected:', category);
                     renderBooksGrid(category);
                 });
             });
+
+            // Add direct onclick attribute as a fallback
+            refreshedTabs.forEach(tab => {
+                const category = tab.getAttribute('data-category');
+                tab.setAttribute('onclick', `filterBooksByCategory('${category}')`);
+            });
+        } else {
+            console.error('No category tabs found on books page');
         }
     } else {
-        console.log('Books page initialization failed:', {
+        console.error('Books page initialization failed:', {
             booksGridExists: !!booksGrid,
             windowBooksExists: !!window.books
         });
@@ -324,3 +346,48 @@ function initContactForm() {
         });
     }
 }
+
+/**
+ * Global function to filter books by category
+ * This is used as a fallback for direct onclick attributes
+ * @param {string} category - The category to filter by
+ */
+function filterBooksByCategory(category) {
+    console.log('filterBooksByCategory called with:', category);
+
+    // Check if we're on the books page
+    if (document.querySelector('.books-grid')) {
+        // Update active tab
+        const tabs = document.querySelectorAll('.category-tab');
+        tabs.forEach(tab => {
+            if (tab.getAttribute('data-category') === category) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        // Render filtered books
+        renderBooksGrid(category);
+    }
+    // Check if we're on the home page
+    else if (document.querySelector('.books-carousel')) {
+        // Update active tab
+        const tabs = document.querySelectorAll('.filter-tab');
+        tabs.forEach(tab => {
+            if (tab.getAttribute('data-filter') === category) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        // Use the home page filter function
+        if (typeof window.renderBooks === 'function') {
+            window.renderBooks(category);
+        }
+    }
+}
+
+// Make the function globally available
+window.filterBooksByCategory = filterBooksByCategory;

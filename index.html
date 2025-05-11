@@ -185,9 +185,9 @@
                 <h2 class="section-title">Literary Works</h2>
                 <p class="section-subtitle">Explore my published books across multiple genres</p>
                 <div class="filter-tabs">
-                    <button class="filter-tab active" data-filter="all">All Works</button>
-                    <button class="filter-tab" data-filter="fiction">Science Fiction</button>
-                    <button class="filter-tab" data-filter="non-fiction">Vedic Wisdom</button>
+                    <button class="filter-tab active" data-filter="all" onclick="filterBooksByCategory('all')">All Works</button>
+                    <button class="filter-tab" data-filter="fiction" onclick="filterBooksByCategory('fiction')">Science Fiction</button>
+                    <button class="filter-tab" data-filter="non-fiction" onclick="filterBooksByCategory('non-fiction')">Vedic Wisdom</button>
                 </div>
                 <div class="books-carousel">
                     <!-- Book cards will be dynamically added here -->
@@ -391,9 +391,9 @@
 
                 <div class="books-categories">
                     <div class="category-tabs">
-                        <button class="category-tab active" data-category="all">All Books</button>
-                        <button class="category-tab" data-category="fiction">Science Fiction</button>
-                        <button class="category-tab" data-category="non-fiction">Vedic Astrology</button>
+                        <button class="category-tab active" data-category="all" onclick="filterBooksByCategory('all')">All Books</button>
+                        <button class="category-tab" data-category="fiction" onclick="filterBooksByCategory('fiction')">Science Fiction</button>
+                        <button class="category-tab" data-category="non-fiction" onclick="filterBooksByCategory('non-fiction')">Vedic Astrology</button>
                     </div>
                 </div>
 
