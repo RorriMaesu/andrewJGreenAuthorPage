@@ -47,20 +47,7 @@ const books = [
         price: "Free with Kindle Unlimited | $5.28 Kindle | $63.92 Hardcover",
         featured: true
     },
-    {
-        id: 4,
-        title: "Codex of the Celestial Dream",
-        subtitle: "Indo-Pacific Black & White Edition",
-        cover: "https://m.media-amazon.com/images/I/51mQeHdFfHL._SY445_SX342_.jpg",
-        description: "Translated into Australian, enjoy this special edition of Codex of the Celestial Dream. 72% of proceeds go to Save the Children of India.",
-        category: "non-fiction",
-        links: {
-            amazon: "https://www.amazon.com/dp/B0CQNBVNZM/",
-            hardcover: "#"
-        },
-        price: "Hardcover - Limited Availability",
-        featured: false
-    }
+
 ];
 
 // Initialize books section
