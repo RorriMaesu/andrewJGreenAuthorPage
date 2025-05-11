@@ -59,7 +59,7 @@ window.books = [
             kindle: "#",
             preorder: "#"
         },
-        price: "Coming June 13th, 2025",
+        price: "Coming June 14th, 2025",
         featured: true,
         upcoming: true
     },
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="book-cover">
                 <img src="${book.cover}" alt="${book.title} book cover">
                 ${book.featured ? '<span class="featured-badge">Featured</span>' : ''}
-                ${book.upcoming ? '<span class="upcoming-badge">Coming June 13th</span>' : ''}
+                ${book.upcoming ? '<span class="upcoming-badge">Coming June 14th</span>' : ''}
             </div>
             <div class="book-info">
                 <h3>${book.title}</h3>
