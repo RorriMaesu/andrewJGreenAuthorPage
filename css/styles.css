@@ -630,6 +630,8 @@ img {
     box-shadow: var(--shadow-glow-cyan);
     overflow: hidden;
     animation: fadeInUp 1s ease-out;
+    position: relative;
+    z-index: 10;
 }
 
 .author-avatar img {
@@ -901,6 +903,7 @@ img {
 
 .book-cover.wide-format img {
     object-fit: contain;
+    background-color: #0a0c14; /* Match the background color */
 }
 
 .book-card:hover .book-cover img {
@@ -1329,12 +1332,14 @@ img {
 /* Special styling for the 12 Laws of Power book which has a wide format cover */
 .upcoming-book:first-child .upcoming-book-cover {
     flex: 0 0 350px;
+    max-width: 350px;
 }
 
 .upcoming-book-cover img {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: contain;
 }
 
 .upcoming-book-details {
@@ -3037,6 +3042,7 @@ img {
 .preview-cover.wide-format {
     width: 300px;
     object-fit: contain;
+    background-color: #0a0c14; /* Match the background color */
 }
 
 .preview-info {
