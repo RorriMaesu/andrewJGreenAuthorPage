@@ -79,6 +79,73 @@
     transition: opacity 0.25s, transform 0.25s;
     z-index: 1010;
 }
+/* Trust Strip Row for Section Icons Above Text */
+.trust-strip-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.trust-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 120px;
+    max-width: 180px;
+    margin: 0 0.5rem;
+}
+
+.trust-item i {
+    font-size: 2.2rem;
+    color: var(--accent-primary);
+    margin-bottom: 0.5rem;
+}
+
+.trust-label {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    text-align: center;
+    font-family: var(--font-heading);
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+@media (max-width: 1024px) {
+    .trust-strip-row {
+        gap: 1.2rem;
+    }
+    .trust-item {
+        min-width: 100px;
+        max-width: 140px;
+    }
+    .trust-item i {
+        font-size: 1.6rem;
+    }
+    .trust-label {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .trust-strip-row {
+        gap: 0.5rem;
+    }
+    .trust-item {
+        min-width: 80px;
+        max-width: 120px;
+    }
+    .trust-item i {
+        font-size: 1.2rem;
+    }
+    .trust-label {
+        font-size: 0.85rem;
+    }
+}
 .book-description-container:hover .desc-tooltip {
     /* Tooltip always visible, no hover effect needed */
 }
