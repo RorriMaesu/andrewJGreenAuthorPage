@@ -61,31 +61,30 @@ window.books = [
         price: "$9.99 Kindle | $24.99 Paperback",
         featured: true
     },
+    // ...removed upcoming book...
 ];
 
 // Initialize books section
 document.addEventListener('DOMContentLoaded', function() {
-    const booksCarousel = document.querySelector('.books-carousel');
-    const filterTabs = document.querySelectorAll('.filter-tab');
 
-    if (!booksCarousel) return;
-
-    // Render all books initially
-    renderBooks('all');
-
-    // Filter tabs functionality
-    if (filterTabs) {
-        filterTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Update active tab
-                filterTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                // Filter books
-                const filter = tab.getAttribute('data-filter');
-                renderBooks(filter);
-            });
+    // Render all books in the books page
+    function renderBooksPage() {
+        const booksGrid = document.querySelector('.books-grid');
+        if (!booksGrid) return;
+        booksGrid.innerHTML = '';
+        window.books.forEach(book => {
+            const card = createBookCard(book);
+            booksGrid.appendChild(card);
         });
+        initTiltEffect();
+    }
+
+    // Listen for custom event from router when books page loads
+    document.addEventListener('page:books', renderBooksPage);
+
+    // If books page is already loaded, render immediately
+    if (document.querySelector('.books-grid')) {
+        renderBooksPage();
     }
 
     // Function to render books based on filter
@@ -123,42 +122,90 @@ document.addEventListener('DOMContentLoaded', function() {
         card.setAttribute('data-category', book.category);
 
         // Log the card creation for debugging
-        console.log('Creating book card with category:', book.category);
 
 
-        // Only add upcoming class and badge for books with book.upcoming === true
-        if (book.upcoming === true) {
-            card.classList.add('upcoming-book');
+        // Removed upcoming book logic
+
+        // Add an id to the 12 Laws of Power card for scroll targeting
+        if (book.title === 'The 12 Laws of Power') {
+            card.id = 'lawsofpower';
         }
 
         card.innerHTML = `
             <div class="book-cover">
                 <img src="${book.cover}" alt="${book.title} book cover">
-                ${book.featured ? '<span class="featured-badge">Featured</span>' : ''}
-                ${book.upcoming === true ? '<span class="upcoming-badge">Coming Soon</span>' : ''}
+                ${book.title === 'The 12 Laws of Power' ? '<span class="featured-badge animated-featured-badge">Featured</span>' : ''}
             </div>
             <div class="book-info">
                 <h3>${book.title}</h3>
+                <span class="desc-tooltip">Click to zoom</span>
                 <p class="book-subtitle">${book.subtitle}</p>
-                <p class="book-description">${book.description}</p>
+                <div class="book-description-container">
+                    <p class="book-description">${book.description}</p>
+                </div>
                 <div class="book-links">
-                    <a href="${book.links.amazon}" class="btn btn-primary btn-sm" target="_blank">
-                        <i class="fab fa-amazon"></i> Amazon
+                    <a href="${book.links.amazon}" class="btn btn-lg btn-primary book-btn" target="_blank">
+                        <i class="fab fa-amazon"></i> Buy on Amazon
                     </a>
                     ${book.links.kindle ? `
-                    <a href="${book.links.kindle}" class="btn btn-secondary btn-sm" target="_blank">
-                        <i class="fas fa-tablet-alt"></i> Kindle
-                    </a>
-                    ` : ''}
-                    ${book.links.signed ? `
-                    <a href="${book.links.signed}" class="btn btn-secondary btn-sm">
-                        <i class="fas fa-signature"></i> Signed Copy
+                    <a href="${book.links.kindle}" class="btn btn-lg btn-secondary book-btn" target="_blank">
+                        <i class="fas fa-tablet-alt"></i> Kindle Edition
                     </a>
                     ` : ''}
                 </div>
                 <p class="price-info"><i class="fas fa-tag"></i> ${book.price}</p>
             </div>
         `;
+
+        // Popout description for desktop users (separate from card)
+        const descContainer = card.querySelector('.book-description-container');
+        const descText = card.querySelector('.book-description');
+        const tooltip = card.querySelector('.desc-tooltip');
+        // Make the entire card clickable for popup
+        if (tooltip) {
+            card.addEventListener('click', function(e) {
+                // Prevent preview button from triggering popup
+                if (e.target.closest('.preview-btn')) return;
+                // Prevent opening another popup if one is already open
+                if (document.querySelector('.book-description-popout.is-popped-out')) return;
+                if (window.innerWidth > 1024) {
+                    e.stopPropagation();
+                    // Hide original description
+                    if (descContainer) descContainer.style.visibility = 'hidden';
+                    // Hide tooltip
+                    tooltip.style.display = 'none';
+                    // Create popout element centered on screen
+                    const popout = document.createElement('div');
+                    popout.className = 'book-description-popout is-popped-out';
+                    popout.innerHTML = `
+                        <button class="close-popout" style="position:absolute;top:1rem;right:1rem;font-size:2rem;background:none;border:none;color:var(--accent-primary);cursor:pointer;z-index:3100;">&times;</button>
+                        <p class="book-description is-popped-out-text">${book.description}</p>
+                    `;
+                    popout.style.position = 'fixed';
+                    popout.style.left = '50%';
+                    popout.style.top = '50%';
+                    popout.style.transform = 'translate(-50%, -50%)';
+                    popout.style.width = '60vw';
+                    popout.style.maxWidth = '900px';
+                    popout.style.height = 'auto';
+                    popout.style.maxHeight = '80vh';
+                    popout.style.overflowY = 'auto';
+                    popout.style.zIndex = '3000';
+                    document.body.appendChild(popout);
+                    // Collapse when clicking anywhere except the popup itself
+                    function closePopout(ev) {
+                        // Always close popup on any click
+                        popout.remove();
+                        if (descContainer) descContainer.style.visibility = '';
+                        tooltip.style.display = '';
+                        document.removeEventListener('click', closePopout, true);
+                    }
+                    setTimeout(() => {
+                        document.addEventListener('click', closePopout, true);
+                    }, 10);
+                }
+            });
+        }
 
         // Add event listener for preview button
         const previewBtn = card.querySelector('.preview-btn');
@@ -169,6 +216,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 openBookPreview(bookId);
             });
         }
+
+        // Popout logic is handled by the book-description-container click event below
 
         return card;
     }
@@ -206,6 +255,15 @@ document.addEventListener('DOMContentLoaded', function() {
         function resetTilt() {
             this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
         }
+    }
+
+    // Prevent any scroll effect when clicking All Books or changing category
+    const allBooksTab = document.querySelector('.category-tab[data-category="all"]');
+    if (allBooksTab) {
+        allBooksTab.addEventListener('click', function(e) {
+            // Prevent scroll/jump after clicking All Books
+            window.scrollTo({ top: 0, behavior: 'auto' });
+        });
     }
 });
 
@@ -312,13 +370,19 @@ function openBookPreview(bookId) {
     const book = window.books.find(b => b.id === bookId);
     const bookPreview = window.bookPreviews.find(bp => bp.id === bookId);
 
-    if (!book || !bookPreview) return;
+    if (!book || !bookPreview) {
+        return;
+    }
 
     const previewModal = document.getElementById('preview-modal');
-    if (!previewModal) return;
+    if (!previewModal) {
+        return;
+    }
 
     const modalBody = previewModal.querySelector('.modal-body');
-    if (!modalBody) return;
+    if (!modalBody) {
+        return;
+    }
 
     // Set preview content
     modalBody.innerHTML = `
@@ -329,17 +393,12 @@ function openBookPreview(bookId) {
                     <h2>${book.title}</h2>
                     <p class="preview-subtitle">${book.subtitle}</p>
                     <div class="preview-buttons">
-                        <a href="${book.links.amazon}" class="btn btn-primary" target="_blank">
+                        <a href="${book.links.amazon}" class="btn btn-lg btn-primary book-btn" target="_blank">
                             <i class="fab fa-amazon"></i> Buy on Amazon
                         </a>
                         ${book.links.kindle ? `
-                        <a href="${book.links.kindle}" class="btn btn-secondary" target="_blank">
-                            <i class="fas fa-tablet-alt"></i> Get Kindle Edition
-                        </a>
-                        ` : ''}
-                        ${book.links.signed ? `
-                        <a href="${book.links.signed}" class="btn btn-secondary">
-                            <i class="fas fa-signature"></i> Get Signed Copy
+                        <a href="${book.links.kindle}" class="btn btn-lg btn-secondary book-btn" target="_blank">
+                            <i class="fas fa-tablet-alt"></i> Kindle Edition
                         </a>
                         ` : ''}
                     </div>

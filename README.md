@@ -6,13 +6,13 @@ This is the official website for author Andrew J. Green, hosted on GitHub Pages.
 
 Andrew J. Green is an author who blends science fiction with Vedic philosophy, creating stories where code meets cosmos. By day, he climbs telecommunications towers, and by night, he explores the intersection of technology and ancient wisdom through his writing.
 
+
 ## Features
 
 - Responsive design that works on all devices
 - Dark/light mode toggle
 - Book showcase with filtering options
 - Reviews carousel
-- Blog section
 - Events timeline
 - Newsletter signup
 - Interactive elements with smooth animations
@@ -39,7 +39,6 @@ This website is built with modern HTML, CSS, and JavaScript, making it easy to m
   - `main.js` - Core functionality
   - `books.js` - Books data and display
   - `reviews.js` - Reviews data and carousel
-  - `blog.js` - Blog posts data and display
   - `events.js` - Events data and timeline
 - `images/` - Image assets
 

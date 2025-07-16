@@ -118,8 +118,12 @@ function loadPage(page) {
         // Update active nav link
         updateActiveNavLink(page);
 
-        // Initialize page-specific functionality
-        initPageFunctionality(page);
+        // *** Dispatch custom event for page load ***
+        document.dispatchEvent(new CustomEvent('page-loaded', { detail: { page: page } }));
+        // Also dispatch page-specific event for books page
+        if (page === 'books') {
+            document.dispatchEvent(new Event('page:books'));
+        }
     }
 }
 
@@ -157,13 +161,35 @@ function initPageFunctionality(page) {
 
         case 'books':
             // Initialize books page components
+            console.log('[DEBUG] initBooksPage called');
             initBooksPage();
+            // Auto-scroll to 12 Laws of Power if requested
+            setTimeout(() => {
+                console.log('[DEBUG] Auto-scroll timeout fired');
+                let section = 'lawsofpower';
+                // Always scroll to lawsofpower card
+                const target = document.getElementById(section);
+                console.log('[DEBUG] target element:', target);
+                if (target) {
+                    // Center the card vertically
+                    target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Add glowing effect
+                    target.classList.add('glow-highlight');
+                    // Remove glow on click/tap
+                    const removeGlow = () => {
+                        target.classList.remove('glow-highlight');
+                        target.removeEventListener('click', removeGlow);
+                        target.removeEventListener('touchstart', removeGlow);
+                    };
+                    target.addEventListener('click', removeGlow);
+                    target.addEventListener('touchstart', removeGlow);
+                    console.log('[DEBUG] Scrolled to and highlighted target:', section);
+                } else {
+                    console.log('[DEBUG] Target not found for section:', section);
+                }
+            }, 400);
             break;
 
-        case 'blog':
-            // Initialize blog page components
-            initBlogPage();
-            break;
 
         case 'contact':
             // Initialize contact page components
@@ -177,54 +203,19 @@ function initPageFunctionality(page) {
  */
 function initBooksPage() {
     const booksGrid = document.querySelector('.books-grid');
-    const categoryTabs = document.querySelectorAll('.category-tab');
-
     if (booksGrid && window.books) {
-        // Render all books initially
-        renderBooksGrid('all');
-
-        // Category tabs functionality
-        if (categoryTabs && categoryTabs.length > 0) {
-            console.log('Found category tabs:', categoryTabs.length);
-
-            // Remove any existing event listeners (just in case)
-            categoryTabs.forEach(tab => {
-                const newTab = tab.cloneNode(true);
-                tab.parentNode.replaceChild(newTab, tab);
-            });
-
-            // Re-select the tabs after cloning
-            const refreshedTabs = document.querySelectorAll('.category-tab');
-
-            // Add click event listeners
-            refreshedTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    console.log('Category tab clicked directly');
-
-                    // Update active tab
-                    refreshedTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Filter books
-                    const category = this.getAttribute('data-category');
-                    console.log('Category selected:', category);
-                    renderBooksGrid(category);
-                });
-            });
-
-            // Add direct onclick attribute as a fallback
-            refreshedTabs.forEach(tab => {
-                const category = tab.getAttribute('data-category');
-                tab.setAttribute('onclick', `filterBooksByCategory('${category}')`);
-            });
-        } else {
-            console.error('No category tabs found on books page');
-        }
+        // Render all books initially in the grid
+        renderBooksGrid();
     } else {
-        console.error('Books page initialization failed:', {
-            booksGridExists: !!booksGrid,
-            windowBooksExists: !!window.books
-        });
+        // If booksGrid exists but window.books is not yet loaded, try again shortly
+        if (booksGrid && !window.books) {
+            setTimeout(initBooksPage, 100);
+        } else {
+            console.error('Books page initialization failed:', {
+                booksGridExists: !!booksGrid,
+                windowBooksExists: !!window.books
+            });
+        }
     }
 }
 
@@ -233,30 +224,18 @@ function initBooksPage() {
  * @param {string} category - The category to filter by
  */
 function renderBooksGrid(category) {
-    console.log('Rendering books grid with category:', category);
-
     const booksGrid = document.querySelector('.books-grid');
     if (!booksGrid || !window.books) {
-        console.error('Cannot render books grid:', {
-            booksGridExists: !!booksGrid,
-            windowBooksExists: !!window.books
-        });
         return;
     }
 
     // Clear current books
     booksGrid.innerHTML = '';
 
-    // Filter books by category
-    let filteredBooks = window.books;
-    if (category !== 'all') {
-        filteredBooks = window.books.filter(book => book.category === category);
-    }
+    // Only show published books
+    const publishedBooks = window.books;
 
-    console.log('Filtered books:', filteredBooks.length, 'of', window.books.length);
-
-    // Add books to grid
-    filteredBooks.forEach(book => {
+    publishedBooks.forEach(book => {
         const bookCard = createDetailedBookCard(book);
         booksGrid.appendChild(bookCard);
     });
@@ -271,6 +250,13 @@ function createDetailedBookCard(book) {
     const card = document.createElement('div');
     card.className = 'book-card';
     card.setAttribute('data-category', book.category);
+
+    // Add an id to the 12 Laws of Power card for scroll targeting
+    if (book.title === 'The 12 Laws of Power') {
+        card.id = 'lawsofpower';
+        // Update price for 12 Laws of Power
+        book.price = "$2.99 Kindle | $9.99 Paperback | $17.76 Hardcover";
+    }
 
     card.innerHTML = `
         <div class="book-cover">
@@ -290,11 +276,6 @@ function createDetailedBookCard(book) {
                     <i class="fas fa-tablet-alt"></i> Get Kindle Edition
                 </a>
                 ` : ''}
-                ${book.links.signed ? `
-                <a href="${book.links.signed}" class="btn btn-secondary">
-                    <i class="fas fa-signature"></i> Get Signed Copy
-                </a>
-                ` : ''}
             </div>
             <p class="price-info"><i class="fas fa-tag"></i> ${book.price}</p>
         </div>
@@ -304,32 +285,6 @@ function createDetailedBookCard(book) {
 }
 
 /**
- * Initialize the blog page
- */
-function initBlogPage() {
-    const blogGrid = document.querySelector('.blog-posts-grid');
-    const categoryTabs = document.querySelectorAll('.category-tab');
-
-    if (blogGrid && window.blogPosts) {
-        // Render all blog posts initially
-        renderBlogGrid('all');
-
-        // Category tabs functionality
-        if (categoryTabs) {
-            categoryTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Update active tab
-                    categoryTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-
-                    // Filter blog posts
-                    const category = tab.getAttribute('data-category');
-                    renderBlogGrid(category);
-                });
-            });
-        }
-    }
-}
 
 /**
  * Initialize the contact form
@@ -392,4 +347,3 @@ function filterBooksByCategory(category) {
 }
 
 // Make the function globally available
-window.filterBooksByCategory = filterBooksByCategory;

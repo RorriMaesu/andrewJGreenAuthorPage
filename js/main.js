@@ -306,77 +306,7 @@ function initReviewsCarousel() {
  * Book filter functionality for the home page
  */
 function initBookFilters() {
-    const filterTabs = document.querySelectorAll('.filter-tab');
-    const booksCarousel = document.querySelector('.books-carousel');
-
-    if (!filterTabs.length || !booksCarousel) {
-        console.log('Filter tabs or books carousel not found');
-        return;
-    }
-
-    console.log('Initializing book filters for home page');
-
-    // Add click event listeners to filter tabs
-    filterTabs.forEach(tab => {
-        // Remove existing event listeners by cloning
-        const newTab = tab.cloneNode(true);
-        tab.parentNode.replaceChild(newTab, tab);
-    });
-
-    // Re-select tabs after cloning
-    const refreshedTabs = document.querySelectorAll('.filter-tab');
-
-    // Add click event listeners
-    refreshedTabs.forEach(tab => {
-        tab.addEventListener('click', function() {
-            console.log('Filter tab clicked on home page');
-
-            // Update active tab
-            refreshedTabs.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-
-            // Get filter value
-            const filter = this.getAttribute('data-filter');
-            console.log('Filter selected:', filter);
-
-            // Filter books
-            if (typeof window.filterBooksByCategory === 'function') {
-                window.filterBooksByCategory(filter);
-            } else if (typeof window.renderBooks === 'function') {
-                window.renderBooks(filter);
-            } else if (window.books) {
-                // Fallback if renderBooks function is not available
-                filterBooks(filter);
-            }
-        });
-    });
-
-    // Fallback function to filter books
-    function filterBooks(filter) {
-        console.log('Using fallback filter function with filter:', filter);
-
-        // Get all book cards
-        const bookCards = booksCarousel.querySelectorAll('.book-card');
-
-        if (!bookCards.length) {
-            console.log('No book cards found');
-            return;
-        }
-
-        // Show/hide based on filter
-        bookCards.forEach(card => {
-            if (filter === 'all') {
-                card.style.display = '';
-            } else {
-                const category = card.getAttribute('data-category');
-                if (category === filter) {
-                    card.style.display = '';
-                } else {
-                    card.style.display = 'none';
-                }
-            }
-        });
-    }
+    // Book filter functionality removed
 }
 
 /**
