@@ -92,9 +92,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make it globally accessible
     window.renderBooks = function(filter) {
         // Filter books
-        const filteredBooks = filter === 'all'
-            ? window.books
-            : window.books.filter(book => book.category === filter);
+        let filteredBooks;
+        if (filter === 'all') {
+            filteredBooks = window.books;
+        } else if (filter === 'featured') {
+            filteredBooks = window.books.filter(book => book.featured);
+        } else {
+            filteredBooks = window.books.filter(book => book.category === filter);
+        }
 
         // Clear current books
         booksCarousel.innerHTML = '';
@@ -120,8 +125,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Log the card creation for debugging
         console.log('Creating book card with category:', book.category);
 
-        // Add upcoming class if it's an upcoming book
-        if (book.upcoming) {
+
+        // Only add upcoming class and badge for books with book.upcoming === true
+        if (book.upcoming === true) {
             card.classList.add('upcoming-book');
         }
 
@@ -129,21 +135,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="book-cover">
                 <img src="${book.cover}" alt="${book.title} book cover">
                 ${book.featured ? '<span class="featured-badge">Featured</span>' : ''}
-                ${book.upcoming ? '<span class="upcoming-badge">Coming June 14th</span>' : ''}
+                ${book.upcoming === true ? '<span class="upcoming-badge">Coming Soon</span>' : ''}
             </div>
             <div class="book-info">
                 <h3>${book.title}</h3>
                 <p class="book-subtitle">${book.subtitle}</p>
                 <p class="book-description">${book.description}</p>
                 <div class="book-links">
-                    ${book.upcoming ? `
-                    <a href="#newsletter" class="btn btn-primary btn-sm">
-                        <i class="fas fa-bell"></i> Get Notified
-                    </a>
-                    <a href="#" class="btn btn-secondary btn-sm preview-btn" data-book-id="${book.id}">
-                        <i class="fas fa-book-open"></i> Preview
-                    </a>
-                    ` : `
                     <a href="${book.links.amazon}" class="btn btn-primary btn-sm" target="_blank">
                         <i class="fab fa-amazon"></i> Amazon
                     </a>
@@ -157,7 +155,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         <i class="fas fa-signature"></i> Signed Copy
                     </a>
                     ` : ''}
-                    `}
                 </div>
                 <p class="price-info"><i class="fas fa-tag"></i> ${book.price}</p>
             </div>
@@ -332,11 +329,6 @@ function openBookPreview(bookId) {
                     <h2>${book.title}</h2>
                     <p class="preview-subtitle">${book.subtitle}</p>
                     <div class="preview-buttons">
-                        ${book.upcoming ? `
-                        <a href="#newsletter" class="btn btn-primary">
-                            <i class="fas fa-bell"></i> Get Notified on Release
-                        </a>
-                        ` : `
                         <a href="${book.links.amazon}" class="btn btn-primary" target="_blank">
                             <i class="fab fa-amazon"></i> Buy on Amazon
                         </a>
@@ -350,7 +342,6 @@ function openBookPreview(bookId) {
                             <i class="fas fa-signature"></i> Get Signed Copy
                         </a>
                         ` : ''}
-                        `}
                     </div>
                     <p class="preview-price"><i class="fas fa-tag"></i> ${book.price}</p>
                 </div>
