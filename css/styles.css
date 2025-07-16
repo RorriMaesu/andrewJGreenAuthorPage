@@ -33,6 +33,30 @@
     color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
 }
+/* Center newsletter form fields for desktop */
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.newsletter-form .form-group {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: var(--spacing-md);
+}
+
+.newsletter-form input,
+.newsletter-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+.newsletter-form .btn {
+    display: block;
+    margin: 0 auto;
+}
 /* Tooltip for book description zoom */
 .desc-tooltip {
     position: relative;
@@ -60,11 +84,14 @@
 }
 @media (max-width: 1024px) {
     .reviews-section .section-title {
-        text-align: center;
+        text-align: center !important;
         width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-direction: row !important;
     }
     .desc-tooltip {
         display: none;
@@ -329,10 +356,26 @@ img {
 }
 
 .section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
     text-align: center;
     margin-bottom: var(--spacing-xl);
     position: relative;
     padding-bottom: var(--spacing-md);
+}
+
+.section-title i {
+    font-size: 2.2rem;
+    color: var(--accent-primary);
+    vertical-align: middle;
+}
+
+.section-title span {
+    display: inline-block;
+    font-family: var(--font-heading);
+}
 }
 
 .section-title::before {
