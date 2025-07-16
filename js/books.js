@@ -55,13 +55,11 @@ window.books = [
         description: "True power isn't about domination—it's about knowing exactly when to speak, what to reveal, and how to move others without ever breaking your own integrity. This razor-sharp guide combines neuroscience, psychology, and ancient Vedic archetypes to give you the ultimate persuasion toolkit.",
         category: "non-fiction",
         links: {
-            amazon: "#",
-            kindle: "#",
-            preorder: "#"
+            amazon: "https://www.amazon.com/12-laws-power-influence-ethically/dp/b0fdbc5jpj",
+            kindle: "https://www.amazon.com/12-laws-power-influence-ethically/dp/b0fdbc5jpj"
         },
-        price: "Coming June 14th, 2025",
-        featured: true,
-        upcoming: true
+        price: "$9.99 Kindle | $24.99 Paperback",
+        featured: true
     },
 ];
 
