@@ -1607,6 +1607,10 @@ img {
 /* Books Page */
 .full-books-section {
     padding: var(--spacing-xxl) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 
@@ -1656,6 +1660,11 @@ img {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xxl);
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 /* Responsive grid for tablets */
 @media (max-width: 1024px) {
