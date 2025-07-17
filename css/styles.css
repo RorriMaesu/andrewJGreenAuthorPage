@@ -443,7 +443,7 @@ img {
     display: inline-block;
     font-family: var(--font-heading);
 }
-}
+
 
 .section-title::before {
     content: '';
